@@ -79,24 +79,10 @@ const Outer = styled.div`
   ${presets.Hd} {
     flex: 0 0 auto;
     max-width: 33.33333333%;
-    border-left: 4px solid ${colors.ui.light};
+    border-left: 1px solid ${colors.ui.light};
 
-    &:nth-child(n+4) {
-      font-weight: 700;
-    }
-
-    &:nth-child(odd) {
-      background-color: red;
-    }
-
-    &:nth-child(1) {
-      color: red;
-    }
-    &:nth-child(2) {
-      color: green;
-    }
-    &:nth-child(3) {
-      color: orange;
+    &:nth-child(3n+1) {
+      border-left: 0;
     }
   }
 `
