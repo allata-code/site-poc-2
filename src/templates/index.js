@@ -10,14 +10,18 @@ import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 import colors from '../utils/colors'
-import Cards from "../components/cards"
-import CardOld from "../components/Card"
-import Cardeee from "../components/card2"
-import CardHeadline from "../components/card-headline"
+import Cards from '../components/cards'
+import CardOld from '../components/Card'
+import Cardeee from '../components/card2'
+import CardHeadline from '../components/card-headline'
+import Missions from '../components/missions'
+import MissionTile from '../components/mission-tile'
+import MissionFlex from '../components/mission-flex'
 
 const Index = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
   const clients = data.allContentfulClient.edges
+  const missions = data.allContentfulMission.edges
   const featuredPost = posts[0].node
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
@@ -43,8 +47,7 @@ const Index = ({ data, pageContext }) => {
             {posts.map(({ node: post }) => (
               <CardOld key={post.id} {...post} />
             ))}
-            </CardList>
-
+          </CardList>
         )}
       </Container>
       <Pagination context={pageContext} />
@@ -57,12 +60,10 @@ const Index = ({ data, pageContext }) => {
         </CardList>
       </Container>
       <Container>
-      <Cards>
+        <Cards>
           <Cardeee>
             <CardHeadline>Modern web tech without the headache</CardHeadline>
-            <p>
-              Enjoy the power of the latest web technologies –{` `}
-            </p>
+            <p>Enjoy the power of the latest web technologies –{` `}</p>
           </Cardeee>
           <Cardeee>
             <CardHeadline>Bring your own data</CardHeadline>
@@ -116,6 +117,16 @@ const Index = ({ data, pageContext }) => {
           </Cardeee>
         </Cards>
       </Container>
+      <Container>
+        <Missions>
+          <MissionFlex>
+            <p>Missions</p>
+          </MissionFlex>
+          {missions.map(({ node }) => {
+            return <MissionFlex><MissionTile key={node.id} mission={node} /></MissionFlex>
+          })}
+        </Missions>
+      </Container>
 
       <main
         id={`reach-skip-nav`}
@@ -125,14 +136,25 @@ const Index = ({ data, pageContext }) => {
           flexWrap: `wrap`,
           justifyContent: `space-between`,
         }}
-      >
-      </main>
+      />
     </Layout>
   )
 }
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
+    allContentfulMission(sort: { fields: [description], order: ASC }) {
+      edges {
+        node {
+          id
+          description
+          client {
+            name
+            brandingHexColor
+          }
+        }
+      }
+    }
     allContentfulClient(sort: { fields: [name], order: ASC }) {
       edges {
         node {
