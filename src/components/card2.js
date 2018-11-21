@@ -65,6 +65,8 @@ box-sizing: border-box;
 display: flex;
 transform: translateZ(0);
 
+
+
 ${presets.Tablet} {
   flex: 0 0 auto;
   max-width: 50%;
@@ -80,12 +82,16 @@ ${presets.Tablet} {
 ${presets.Hd} {
   flex: 0 0 auto;
   max-width: 33.33333333%;
-  border-left: 1px solid ${colors.ui.light};
-  &:nth-child(4): {
-    box-shadow: none;
+  border-left: 4px solid ${colors.ui.light};
+
+  &:nth-child(1) {
+    color: red;
   }
-  &:nth-child(3n+1): {
-    border-left: 0;
+  &:nth-child(2) {
+    color: green;
+  }
+  &:nth-child(3) {
+    color: orange;
   }
 }
 `
