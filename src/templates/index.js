@@ -41,7 +41,7 @@ const Index = ({ data, pageContext }) => {
         ) : (
           <CardList>
             {posts.map(({ node: post }) => (
-              <Card key={post.id} {...post} />
+              <CardOld key={post.id} {...post} />
             ))}
             </CardList>
 
