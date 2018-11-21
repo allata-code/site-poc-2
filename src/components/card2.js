@@ -60,40 +60,45 @@ import { vP, vPHd, vPVHd } from '../components/gutters'
 // )
 
 const Outer = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  transform: translateZ(0);
 
-box-sizing: border-box;
-display: flex;
-transform: translateZ(0);
-
-
-
-${presets.Tablet} {
-  flex: 0 0 auto;
-  max-width: 50%;
-  box-shadow: 0 1px 0 0 ${colors.ui.light};
-  &:nth-child(5),&:nth-child(6): {
-    box-shadow: none;
+  ${presets.Tablet} {
+    flex: 0 0 auto;
+    max-width: 50%;
+    box-shadow: 0 1px 0 0 ${colors.ui.light};
+    &:nth-child(5),&:nth-child(6): {
+      box-shadow: none;
+    }
+    &:nth-child(2n): {
+      border-left: 1px solid ${colors.ui.light};
+    }
   }
-  &:nth-child(2n): {
-    border-left: 1px solid ${colors.ui.light};
-  }
-}
 
-${presets.Hd} {
-  flex: 0 0 auto;
-  max-width: 33.33333333%;
-  border-left: 4px solid ${colors.ui.light};
+  ${presets.Hd} {
+    flex: 0 0 auto;
+    max-width: 33.33333333%;
+    border-left: 4px solid ${colors.ui.light};
 
-  &:nth-child(1) {
-    color: red;
+    &:nth-child(n+4) {
+      font-weight: 700;
+    }
+
+    &:nth-child(odd) {
+      background-color: red;
+    }
+
+    &:nth-child(1) {
+      color: red;
+    }
+    &:nth-child(2) {
+      color: green;
+    }
+    &:nth-child(3) {
+      color: orange;
+    }
   }
-  &:nth-child(2) {
-    color: green;
-  }
-  &:nth-child(3) {
-    color: orange;
-  }
-}
 `
 
 const Inner = styled.div`
