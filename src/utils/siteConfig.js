@@ -5,7 +5,7 @@ module.exports = {
   siteDescription:
     'A technology consulting firm with offices in Dallas, Boise, and Phoenix',
   siteUrl: 'https://allata.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
-  postsPerHomePage: 2, // Number of posts shown on the 1st page of of the index.js template (home page)
+  postsPerHomePage: 4, // Number of posts shown on the 1st page of of the index.js template (home page)
   postsPerPage: 3, // Number of posts shown on paginated pages
   author: 'Allata User', // Author for RSS author segment and SEO schema
   authorUrl: 'https://allata.com/about/', // URL used for author and publisher schema, can be a social profile or other personal site

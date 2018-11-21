@@ -54,7 +54,7 @@ const Excerpt = styled.p`
   line-height: 1.6;
 `
 
-const Card = ({ slug, heroImage, title, publishDate, body, client, ...props }) => {
+const CardOld = ({ slug, heroImage, title, publishDate, body, client, ...props }) => {
   return (
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
@@ -71,4 +71,4 @@ const Card = ({ slug, heroImage, title, publishDate, body, client, ...props }) =
   )
 }
 
-export default Card
+export default CardOld

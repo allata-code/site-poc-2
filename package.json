@@ -27,6 +27,7 @@
     "gatsby-source-contentful": "^2.0.5",
     "gatsby-source-filesystem": "^2.0.5",
     "gatsby-transformer-remark": "^2.1.8",
+    "gray-percentage": "^2.0.0",
     "inquirer": "^6.2.0",
     "lodash": "^4.17.11",
     "path": "^0.12.7",
@@ -34,7 +35,9 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
-    "styled-components": "^4.0.2"
+    "styled-components": "^4.0.2",
+    "typography": "^0.16.17",
+    "typography-plugin-code": "^0.16.11"
   },
   "keywords": [
     "gatsby",
