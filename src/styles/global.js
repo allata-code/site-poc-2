@@ -82,6 +82,22 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  h1.shrink {
+    color: #000;
+    font-size: 64px;
+    line-height: 64px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    margin-bottom: 10px;
+  }
+
+  div.text {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 300;
+    margin: 10px 0;
+  }
+
   body {
     background: white;
     line-height: 1;

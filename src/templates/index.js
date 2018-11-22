@@ -52,7 +52,11 @@ const Index = ({ data, pageContext }) => {
       </Container>
       <Pagination context={pageContext} />
       <Container>
-        <h2 className="section-headline">Our Clients</h2>
+        <h1 class="shrink">Our Clients</h1>
+        <div class="text">
+          Just a few of the amazing companies that trust Allata with their
+          important work.
+        </div>
         <CardList>
           {clients.map(({ node }) => {
             return <Client key={node.name} client={node} />
@@ -120,12 +124,29 @@ const Index = ({ data, pageContext }) => {
       <Container>
         <Missions>
           <MissionFlex>
-            <p>Missions</p>
+            <h1 class="shrink">Recent Work</h1>
+            <div class="text">
+              We integrate and collaborate closely with management, design, and
+              engineering teams to approach unique problems and opportunities.
+            </div>
           </MissionFlex>
           {missions.map(({ node }) => {
-            return <MissionFlex><MissionTile key={node.id} mission={node} /></MissionFlex>
+            return (
+              <MissionFlex>
+                <MissionTile key={node.id} mission={node} />
+              </MissionFlex>
+            )
           })}
         </Missions>
+      </Container>
+      <Container>
+        <h1 class="shrink">Solutions</h1>
+        <div class="text">
+          Allata has partnered with over a dozen companies and worked on
+          projects spanning mobile applications, web-based software, connected
+          devices, and beyond. We offer collaborative, full-service design
+          solutions that meet the needs of modern product teams.
+        </div>
       </Container>
 
       <main
@@ -151,6 +172,12 @@ export const query = graphql`
           client {
             name
             brandingHexColor
+            whiteLogo {
+              title
+              fixed(width: 180) {
+                ...GatsbyContentfulFixed_withWebp_noBase64
+              }
+            }
           }
         }
       }

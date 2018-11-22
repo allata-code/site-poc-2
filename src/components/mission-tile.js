@@ -1,14 +1,13 @@
-import React from "react"
+import React from 'react'
 import styled from 'styled-components'
-import presets from "../utils/presets"
-import { scale } from "../utils/typography"
+import presets from '../utils/presets'
+import { scale } from '../utils/typography'
+import Img from 'gatsby-image'
 
 const Tile = styled.div`
   box-sizing: border-box;
   min-height: 280px;
-  background-color: white;
   padding: 40px;
-  background-color: red;
   display: flex;
   flex-flow: column;
 
@@ -28,12 +27,15 @@ const Tile = styled.div`
 const Description = styled.h1`
   display: flex;
   flex: 1;
+  color: white;
 `
 
 const MissionTile = ({ mission, ...props }) => (
-  <Tile>
-    <Description>{mission.description} {mission.client.brandingHexColor}</Description>
-    <h2>{mission.client.name}</h2>
+  <Tile style={{backgroundColor: mission.client.brandingHexColor}}>
+    <Description>
+      {mission.description}
+    </Description>
+    <Img fixed={mission.client.whiteLogo.fixed} />
   </Tile>
 )
 
