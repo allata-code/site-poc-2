@@ -35,8 +35,13 @@ const Index = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
-        <h1 class="shrink">Helping our clients reach new heights.</h1>
-        <div class="text">Allata is a full-service, technology consulting firm built on the principles...</div>
+        <h1 class="shrink">Champions for transforming digital enterprise</h1>
+        <div class="text">
+          Allata exists to produce industry-defining, high-impact work. We're a
+          constantly evolving, relationship-first company aggressively committed
+          to client and employee experience. The agency model is dead. Meet
+          Allata.
+        </div>
       </Container>
       <Container>
         {isFirstPage ? (

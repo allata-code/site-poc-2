@@ -84,8 +84,10 @@ const GlobalStyle = createGlobalStyle`
 
   h1.shrink {
     color: #000;
-    font-size: 64px;
-    line-height: 64px;
+    // font-size: 64px;
+    // line-height: 64px;
+    font-size: calc(24px + (64 - 24) * ((100vw - 100px) / (1600 - 300)));
+    line-height: calc(1.1em + (1.3 - 1.1) * ((100vw - 100px)/(1600 - 300)));
     font-weight: 800;
     letter-spacing: -.5px;
     margin-bottom: 10px;
