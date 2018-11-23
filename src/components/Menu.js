@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const Header = styled.header`
-  background: ${props => props.theme.colors.base};
+  // background: ${props => props.theme.colors.base};
   width: 100%;
   padding: 1.5em 0;
 `
@@ -20,7 +20,7 @@ const Nav = styled.nav`
 
   li {
     display: inline-block;
-    margin-left: 1em;
+    margin-left: 2em;
     &:first-child {
       position: relative;
       margin: 0;
@@ -28,20 +28,24 @@ const Nav = styled.nav`
     }
   }
 
+  img {
+    width: 80px;
+  }
+
   a {
     text-decoration: none;
-    color: DarkGray;
-    font-weight: 600;
+    color: rgba(0,0,0,0.3);
+    font-weight: 700;
     transition: all 0.2s;
-    border-bottom: 2px solid ${props => props.theme.colors.base};
+    // border-bottom: 2px solid ${props => props.theme.colors.base};
     &:hover {
-      color: white;
+      color: black;
     }
   }
 `
 
 const activeLinkStyle = {
-  color: 'white',
+  color: 'black',
 }
 
 const Menu = () => {
@@ -51,7 +55,12 @@ const Menu = () => {
         <ul>
           <li>
             <Link to="/" activeStyle={activeLinkStyle}>
-              Allata
+              <img src="/logos/allata_black.png"></img>
+            </Link>
+          </li>
+          <li>
+            <Link to="/" activeStyle={activeLinkStyle}>
+              Home
             </Link>
           </li>
           <li>
@@ -61,7 +70,12 @@ const Menu = () => {
           </li>
           <li>
             <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Contact
+              Work
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact/" activeStyle={activeLinkStyle}>
+              Posts
             </Link>
           </li>
         </ul>

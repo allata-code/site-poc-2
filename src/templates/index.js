@@ -35,6 +35,10 @@ const Index = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
+        <h1 class="shrink">Helping our clients reach new heights.</h1>
+        <div class="text">Allata is a full-service, technology consulting firm built on the principles...</div>
+      </Container>
+      <Container>
         {isFirstPage ? (
           <CardList>
             <CardOld {...featuredPost} featured />
