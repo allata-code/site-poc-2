@@ -55,6 +55,7 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
+          `gatsby-plugin-netlify`, // make sure to put last in the array
         ],
       },
     },
