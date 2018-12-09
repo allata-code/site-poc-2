@@ -3,13 +3,14 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Helmet from 'react-helmet'
 import Container from '../components/Container'
-import Person from '../components/person'
+import CardList from '../components/CardList'
+import GhostPost from '../components/ghost-post'
 import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 
 const Insights = ({ data }) => {
-  const persons = data.allContentfulPerson.edges
+  const posts = data.allGhostPost.edges
   const postNode = {
     title: `Insights - ${config.siteTitle}`,
   }
@@ -22,14 +23,13 @@ const Insights = ({ data }) => {
       <SEO postNode={postNode} pagePath="insights" customTitle />
 
       <Container>
-        <PageTitle>Insights</PageTitle>
-        <div>
-        {persons.map(({ node }) => {
+          <CardList>
+        {posts.map(({ node }) => {
             return (
-                <Person key={node.id} person={node} />
+                <GhostPost key={node.id} post={node} />
             )
           })}
-          </div>
+          </CardList>
       </Container>
     </Layout>
   )
@@ -37,11 +37,24 @@ const Insights = ({ data }) => {
 
 export const query = graphql`
 query {
-  allContentfulPerson(sort: {fields: [name], order: ASC}) {
+  allGhostPost(
+    sort: { fields: [published_at], order: DESC }
+  ) {
     edges {
       node {
-        name
         id
+        slug
+        title
+        plaintext
+        feature_image
+        custom_excerpt
+        html
+        published_at
+        authors {
+          id
+          slug
+          name
+        }
       }
     }
   }

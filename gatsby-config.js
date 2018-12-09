@@ -68,6 +68,14 @@ module.exports = {
           : contentfulConfig.production,
     },
     {
+      resolve: `gatsby-source-ghost`,
+      options: {
+        apiUrl: `https://allata-insights.ghost.io`,
+        clientId: `ghost-frontend`,
+        clientSecret: `10988926a9be`
+      }
+    },
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS,
