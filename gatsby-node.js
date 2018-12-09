@@ -39,6 +39,12 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
 
+      // Create about page
+      createPage({
+        path: `/about`,
+        component: path.resolve(`./src/pages/about.js`),
+      })
+
       // Create additional pagination on home page if needed
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({

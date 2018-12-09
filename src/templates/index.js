@@ -35,8 +35,10 @@ const Index = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
-        <h1 class="shrink">Champions for transforming digital enterprise</h1>
-        <div class="text">
+        <h1 className="shrink">
+          Champions for transforming digital enterprise
+        </h1>
+        <div className="text">
           Allata exists to produce industry-defining, high-impact work. We're a
           constantly evolving, relationship-first company aggressively committed
           to client and employee experience. The agency model is dead. Meet
@@ -61,14 +63,14 @@ const Index = ({ data, pageContext }) => {
       </Container>
       <Pagination context={pageContext} />
       <Container>
-        <h1 class="shrink">Our Clients</h1>
-        <div class="text">
+        <h1 className="shrink">Our Clients</h1>
+        <div className="text">
           Just a few of the amazing companies that trust Allata with their
           important work.
         </div>
         <CardList>
           {clients.map(({ node }) => {
-            return <Client key={node.name} client={node} />
+            return <Client key={node.id} client={node} />
           })}
         </CardList>
       </Container>
@@ -133,24 +135,20 @@ const Index = ({ data, pageContext }) => {
       <Container>
         <Missions>
           <MissionFlex>
-            <h1 class="shrink">Recent Work</h1>
-            <div class="text">
+            <h1 className="shrink">Recent Work</h1>
+            <div className="text">
               We integrate and collaborate closely with management, design, and
               engineering teams to approach unique problems and opportunities.
             </div>
           </MissionFlex>
           {missions.map(({ node }) => {
-            return (
-              <MissionFlex>
-                <MissionTile key={node.id} mission={node} />
-              </MissionFlex>
-            )
+            return <MissionTile key={node.id} mission={node} />
           })}
         </Missions>
       </Container>
       <Container>
-        <h1 class="shrink">Solutions</h1>
-        <div class="text">
+        <h1 className="shrink">Solutions</h1>
+        <div className="text">
           Allata has partnered with over a dozen companies and worked on
           projects spanning mobile applications, web-based software, connected
           devices, and beyond. We offer collaborative, full-service design
@@ -194,6 +192,7 @@ export const query = graphql`
     allContentfulClient(sort: { fields: [name], order: ASC }) {
       edges {
         node {
+          id
           name
           brandingHexColor
           website

@@ -64,18 +64,23 @@ const Menu = () => {
             </Link>
           </li>
           <li>
+            <Link to="/offerings/" activeStyle={activeLinkStyle}>
+              Offerings
+            </Link>
+          </li>
+          <li>
             <Link to="/about/" activeStyle={activeLinkStyle}>
               About
             </Link>
           </li>
           <li>
-            <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Work
+            <Link to="/insights/" activeStyle={activeLinkStyle}>
+              Insights
             </Link>
           </li>
           <li>
             <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Posts
+              Contact
             </Link>
           </li>
         </ul>

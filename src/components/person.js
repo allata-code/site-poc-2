@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import presets from '../utils/presets'
 import { scale } from '../utils/typography'
 import Img from 'gatsby-image'
-import MissionFlex from './mission-flex'
 
-const Tile = styled.div`
+const Container = styled.div`
   box-sizing: border-box;
   min-height: 280px;
   padding: 40px;
@@ -28,16 +27,14 @@ const Tile = styled.div`
 const Description = styled.h1`
   display: flex;
   flex: 1;
-  color: white;
 `
 
-const MissionTile = ({ mission, ...props }) => (
-  <MissionFlex>
-    <Tile style={{ backgroundColor: mission.client.brandingHexColor }}>
-      <Description>{mission.description}</Description>
-      <Img fixed={mission.client.whiteLogo.fixed} />
-    </Tile>
-  </MissionFlex>
+const Person = ({ person, ...props }) => (
+  <Container>
+    <Description>
+      {person.name}
+    </Description>
+  </Container>
 )
 
-export default MissionTile
+export default Person
