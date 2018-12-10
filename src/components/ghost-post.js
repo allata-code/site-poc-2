@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import AuthorList from '../components/author-list'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import hex2rgba from "hex2rgba"
 
 const Post = styled.li`
   position: relative;
@@ -12,7 +13,7 @@ const Post = styled.li`
   border-radius: 2px;
   margin: 0 0 1em 0;
   width: 100%;
-  transition: background 0.2s;
+  transition: box-shadow 0.2s;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 49%')};
     margin: 0 0 2vw 0;
@@ -21,7 +22,7 @@ const Post = styled.li`
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 32%')};
   }
   &:hover {
-    background: ${props => props.theme.colors.lightestgray};
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
   }
   a {
     display: flex;
