@@ -93,6 +93,14 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 10px;
   }
 
+  align-right {
+    text-align: right;
+  }
+
+  align-left {
+    text-align: left;
+  }
+
   div.text {
     font-size: 20px;
     line-height: 28px;
