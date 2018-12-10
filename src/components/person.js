@@ -1,40 +1,66 @@
 import React from 'react'
 import styled from 'styled-components'
-import presets from '../utils/presets'
-import { scale } from '../utils/typography'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-const Container = styled.div`
-  box-sizing: border-box;
-  min-height: 280px;
-  padding: 40px;
-  display: flex;
-  flex-flow: column;
-
-  ${presets.Tablet} {
-    font-size: ${scale(1 / 10).fontSize};
+const Container = styled.li`
+  position: relative;
+  border: 1px solid ${props => props.theme.colors.secondary};
+  border-radius: 2px;
+  margin: 0 0 1em 0;
+  width: 100%;
+  transition: background 0.2s;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+    flex: ${props => (props.featured ? '0 0 100%' : '0 0 49%')};
+    margin: 0 0 2vw 0;
   }
-  ${presets.Desktop} {
-    font-size: ${scale(3 / 10).fontSize};
+  @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+    flex: ${props => (props.featured ? '0 0 100%' : '0 0 32%')};
   }
-  ${presets.VHd} {
-    font-size: ${scale(5 / 10).fontSize};
+  &:hover {
+    background: ${props => props.theme.colors.tertiary};
   }
-  ${presets.VVHd} {
-    font-size: ${scale(7 / 10).fontSize};
+  a {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+    color: ${props => props.theme.colors.base};
+    text-decoration: none;
+    .gatsby-image-wrapper {
+      height: 0;
+      padding-bottom: 60%;
+      @media screen and (min-width: ${props => props.theme.responsive.small}) {
+        padding-bottom: ${props => (props.featured ? '40%' : '60%')};
+      }
+    }
   }
 `
-const Description = styled.h1`
-  display: flex;
-  flex: 1;
+
+const Name = styled.h2`
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 1rem 1rem 0.5rem 1rem;
 `
 
-const Person = ({ person, ...props }) => (
-  <Container>
-    <Description>
-      {person.name}
-    </Description>
-  </Container>
-)
+const LinkedIn = styled.a`
+  margin: 1rem 1rem 0.5rem 1rem;
+`
+
+const Bio = styled.p`
+  margin: 1rem 1rem 0.5rem 1rem;
+`
+
+const Person = ({ person, ...props }) => {
+  return (
+    <Container>
+      {/* <Img fluid={person.image.fluid} backgroundColor={'#eeeeee'} /> */}
+      <Name>{person.name}</Name>
+      <LinkedIn target="_blank" href={`${person.linkedIn}`}>{person.title}</LinkedIn>
+      <Bio>{person.shortBio.shortBio}</Bio>
+    </Container>
+  )
+}
 
 export default Person

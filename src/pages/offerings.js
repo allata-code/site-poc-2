@@ -36,16 +36,28 @@ const About = ({ data }) => {
 }
 
 export const query = graphql`
-query {
-  allContentfulPerson(sort: {fields: [name], order: ASC}) {
-    edges {
-      node {
-        name
-        id
+  query {
+    allContentfulPerson(sort: { fields: [name], order: ASC }) {
+      edges {
+        node {
+          id
+          name
+          title
+          linkedIn
+          shortBio {
+            shortBio
+            id
+          }
+          image {
+            title
+            fluid(maxWidth: 1800) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+        }
       }
     }
   }
-}
 `
 
 export default About

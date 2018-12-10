@@ -1,12 +1,13 @@
 import React from 'react'
-import Moment from 'react-moment';
+import Moment from 'react-moment'
 import styled from 'styled-components'
-import Person from '../components/person'
+import AuthorList from '../components/author-list'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 const Post = styled.li`
   position: relative;
+  background: #ffffff;
   border: 1px solid ${props => props.theme.colors.secondary};
   border-radius: 2px;
   margin: 0 0 1em 0;
@@ -20,7 +21,7 @@ const Post = styled.li`
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 32%')};
   }
   &:hover {
-    background: ${props => props.theme.colors.tertiary};
+    background: ${props => props.theme.colors.lightestgray};
   }
   a {
     display: flex;
@@ -46,7 +47,7 @@ const Title = styled.h2`
   margin: 1rem 1rem 0.5rem 1rem;
 `
 
-const Date = styled.h3`
+const AuthorAndDate = styled.h3`
   margin: 0 1rem 1.5rem 1rem;
   color: gray;
 `
@@ -61,9 +62,12 @@ const GhostPost = ({ post, ...props }) => {
     <Post>
       <Link to={`/${post.slug}/`}>
         {/* <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} /> */}
-        <img src={post.feature_image}></img>
+        <img src={post.feature_image} />
         <Title>{post.title}</Title>
-        <Moment format="DD MMM YYYY">{post.published_at}</Moment>
+        <AuthorAndDate>
+          <AuthorList authors={post.authors} /> |{' '}
+          <Moment format="DD MMM YYYY">{post.published_at}</Moment>
+        </AuthorAndDate>
         <Excerpt
           dangerouslySetInnerHTML={{
             __html: post.custom_excerpt,
