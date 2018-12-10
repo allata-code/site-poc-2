@@ -22,7 +22,7 @@ const Post = styled.li`
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 32%')};
   }
   &:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    box-shadow: 0 0 11px ${props => hex2rgba(props.theme.colors.base, 0.2)};
   }
   a {
     display: flex;
