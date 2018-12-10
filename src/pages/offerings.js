@@ -23,13 +23,6 @@ const About = ({ data }) => {
 
       <Container>
         <PageTitle>Offerings</PageTitle>
-        <div>
-        {persons.map(({ node }) => {
-            return (
-                <Person key={node.id} person={node} />
-            )
-          })}
-          </div>
       </Container>
     </Layout>
   )

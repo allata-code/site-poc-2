@@ -1,16 +1,29 @@
 import React from 'react'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Helmet from 'react-helmet'
 import Container from '../components/Container'
 import PersonList from '../components/person-list'
 import Person from '../components/person'
+import CoreValue from '../components/core-value'
+import City from '../components/city'
 import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 
+const ValueList = styled.ul`
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 1;
+  justify-content: center;
+  margin: 0 auto;
+`
+
 const About = ({ data }) => {
   const persons = data.allContentfulPerson.edges
+  const cities = data.allContentfulCity.edges
+  const values = data.allContentfulCoreValue.edges
   const postNode = {
     title: `About - ${config.siteTitle}`,
   }
@@ -34,9 +47,19 @@ const About = ({ data }) => {
       </Container>
       <Container>
         <PageTitle>Locations</PageTitle>
+        <PersonList>
+          {cities.map(({ node }) => {
+            return <City key={node.id} city={node} />
+          })}
+        </PersonList>
       </Container>
       <Container>
-        <PageTitle>Core</PageTitle>
+        <PageTitle>Core Values</PageTitle>
+        <ValueList>
+          {values.map(({ node }) => {
+            return <CoreValue key={node.id} coreValue={node} />
+          })}
+        </ValueList>
       </Container>
       <Container>
         <PageTitle>Leadership</PageTitle>
@@ -69,6 +92,29 @@ export const query = graphql`
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
+        }
+      }
+    }
+    allContentfulCity(sort: { fields: [name], order: ASC }) {
+      edges {
+        node {
+          id
+          name
+          cityscape {
+            title
+            fluid(maxWidth: 1800) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+        }
+      }
+    }
+    allContentfulCoreValue(sort: { fields: [name], order: ASC }) {
+      edges {
+        node {
+          id
+          name
+          description
         }
       }
     }
