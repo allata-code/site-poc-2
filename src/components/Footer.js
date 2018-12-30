@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import presets from '../utils/presets'
 
 const Wrapper = styled.footer`
+  padding-top: 48px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -10,70 +12,119 @@ const Wrapper = styled.footer`
   max-width: ${props => props.theme.sizes.maxWidth};
 `
 
-const List = styled.ul`
+const FooterHeader = styled.h1`
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 24px;
+`
+
+const Address = styled.address`
+  margin-bottom: 24px;
+  margin-right: 24px;
+  font-size: 0.9em;
+`
+
+const AddressList = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: ${props => props.theme.sizes.maxWidth};
+`
+
+const List = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  border-top: 1px solid ${props => props.theme.colors.secondary};
+  // border-top: 1px solid ${props => props.theme.colors.secondary};
   padding: 1em 0 2em;
   margin: 0 1.5em;
 `
 
-const Item = styled.li`
-  display: inline-block;
-  padding: 0.25em 0;
+const CopyrightBlock = styled.div`
   width: 100%;
-  @media screen and (min-width: ${props => props.theme.responsive.small}) {
-    width: auto;
+  margin: 24px;
+  text-align: center;
+`
+
+const CauseBlock = styled.div`
+  width: 25%;
+  margin-bottom: 16px;
+
+  ${presets.Mobile} {
+    width: 100%;
   }
-  a {
-    font-weight: 600;
-    transition: all 0.2s;
-    color: ${props => props.theme.colors.base};
-    &:hover {
-      color: ${props => props.theme.colors.highlight};
-    }
-    &:visited {
-      color: ${props => props.theme.colors.base};
-    }
+  ${presets.Tablet} {
+    width: 100%;
+  }
+  ${presets.Desktop} {
+    width: 35%;
+  }
+`
+
+const Cause = styled.p`
+  font-size: 0.9em;
+`
+
+const AddressBlock = styled.div`
+  width: 50%;
+  margin-bottom: 16px;
+
+  ${presets.Mobile} {
+    width: 100%;
+  }
+  ${presets.Tablet} {
+    width: 100%;
+  }
+  ${presets.Desktop} {
+    width: 60%;
   }
 `
 
 const Footer = () => (
   <Wrapper>
     <List>
-      <Item>
-        <a
-          href="https://www.contentful.com/"
-          rel="nofollow noopener noreferrer"
-          target="_blank"
-        >
-          <img
-            src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
-            style={{ width: '100px' }}
-            alt="Powered by Contentful"
-          />
-        </a>
-      </Item>
-      <Item>
-        <a
-          href="https://github.com/allata-code/allata.com-poc1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          allata.com-poc1
-        </a>{' '}
-        by{' '}
-        <a
-          href="https://github.com/allata-code"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          allata devs
-        </a>
-      </Item>
+      <AddressBlock>
+        <FooterHeader>Our offices</FooterHeader>
+        <AddressList>
+          <Address>
+            Boise
+            <br />
+            776 E. Riverside Dr, #100
+            <br />
+            Eagle, ID 83616
+            <br />
+          </Address>
+          <Address>
+            Dallas
+            <br />
+            10260 N Central Expwy, #217
+            <br />
+            Dallas, TX 75231
+            <br />
+          </Address>
+          <Address>
+            Phoenix
+            <br />1 N. 1st St, #691
+            <br />
+            Phoenix, AZ 85004
+            <br />
+          </Address>
+        </AddressList>
+      </AddressBlock>
+      <CauseBlock>
+        <FooterHeader>Working for a cause</FooterHeader>
+        <Cause>
+          Just as strongly as we care about our clients, we feel that it's
+          important to give back to the community. Each year, we donate 1% of
+          our net income to a different charitable cause or non-profit that we're
+          passionate about.
+        </Cause>
+      </CauseBlock>
+      <CopyrightBlock>© 2018 Allata, LLC. All rights reserved.</CopyrightBlock>
     </List>
   </Wrapper>
 )

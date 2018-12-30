@@ -11,9 +11,13 @@ const Tile = styled.div`
   padding: 40px;
   display: flex;
   flex-flow: column;
+  border-radius: 8px;
 
+  ${presets.Mobile} {
+    font-size: ${scale(3 / 10).fontSize};
+  }
   ${presets.Tablet} {
-    font-size: ${scale(1 / 10).fontSize};
+    font-size: ${scale(3 / 10).fontSize};
   }
   ${presets.Desktop} {
     font-size: ${scale(3 / 10).fontSize};

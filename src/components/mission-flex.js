@@ -7,6 +7,7 @@ const MissionFlexContainer = styled.div`
   box-sizing: border-box;
   min-height: 280px;
   padding: 10px;
+  width: 100%;
 
   ${presets.Mobile} {
     width: 100%;
@@ -21,7 +22,7 @@ const MissionFlexContainer = styled.div`
     width: 33.33%;
   }
   ${presets.VVHd} {
-    font-size: ${scale(7 / 10).fontSize};
+    font-size: ${scale(8 / 10).fontSize};
   }
 `
 
