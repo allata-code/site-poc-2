@@ -51,7 +51,7 @@ const CopyrightBlock = styled.div`
 `
 
 const CauseBlock = styled.div`
-  width: 25%;
+  width: 100%;
   margin-bottom: 16px;
 
   ${presets.Mobile} {
@@ -70,7 +70,7 @@ const Cause = styled.p`
 `
 
 const AddressBlock = styled.div`
-  width: 50%;
+  width: 100%;
   margin-bottom: 16px;
 
   ${presets.Mobile} {
