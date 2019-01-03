@@ -65,7 +65,7 @@ exports.createPages = ({ graphql, actions }) => {
         const next = i === posts.length - 1 ? null : posts[i + 1].node
         createPage({
           path: `${edge.node.slug}/`,
-          component: path.resolve(`./src/templates/ghost-post.js`),
+          component: path.resolve(`./src/templates/post.js`),
           context: {
             slug: edge.node.slug,
             prev,
