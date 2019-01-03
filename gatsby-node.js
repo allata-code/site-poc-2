@@ -65,11 +65,58 @@ exports.createPages = ({ graphql, actions }) => {
         const next = i === posts.length - 1 ? null : posts[i + 1].node
         createPage({
           path: `${edge.node.slug}/`,
-          component: path.resolve(`./src/templates/post.js`),
+          component: path.resolve(`./src/templates/ghost-post.js`),
           context: {
             slug: edge.node.slug,
             prev,
             next,
+          },
+        })
+      })
+      resolve()
+    })
+  })
+
+  const loadGhostPosts = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allGhostPost(sort: { fields: [published_at], order: DESC }) {
+          edges {
+            node {
+              id
+              slug
+              title
+              plaintext
+              feature_image
+              custom_excerpt
+              html
+              published_at
+              authors {
+                id
+                slug
+                name
+              }
+            }
+          }
+        }
+      }
+    `).then(result => {
+      const ghostPosts = result.data.allGhostPost.edges
+
+      // Create each individual post
+      ghostPosts.forEach((edge, i) => {
+        const post = ghostPosts[i].node
+        const prev = i === 0 ? null : ghostPosts[i - 1].node
+        const next = i === ghostPosts.length - 1 ? null : ghostPosts[i + 1].node
+        createPage({
+          path: `${edge.node.slug}/`,
+          component: path.resolve(`./src/templates/ghost-post.js`),
+          context: {
+            slug: edge.node.slug,
+            post,
+            prev,
+            next,
+
           },
         })
       })
@@ -144,5 +191,5 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  return Promise.all([loadPosts, loadTags, loadPages])
+  return Promise.all([loadPosts, loadGhostPosts, loadTags, loadPages])
 }

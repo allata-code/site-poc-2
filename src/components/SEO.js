@@ -4,7 +4,7 @@ import config from '../utils/siteConfig'
 
 class SEO extends Component {
   render() {
-    const { postNode, pagePath, postSEO, pageSEO, customTitle } = this.props
+    const { postNode, pagePath, postSEO, pageSEO, ghostPostSEO, customTitle } = this.props
     let title
     let description
     let image
@@ -40,6 +40,17 @@ class SEO extends Component {
       image = 'https:' + postNode.heroImage.ogimg.src
       imgWidth = postNode.heroImage.ogimg.width
       imgHeight = postNode.heroImage.ogimg.height
+    }
+    // GhostPost SEO
+    if (ghostPostSEO) {
+      // OpenGraph image
+      image = 'https:' + postNode.feature_image
+      imgWidth = 800
+      imgHeight = 600
+
+      title = postNode.title
+      description = postNode.custom_excerpt
+      pageUrl = config.siteUrl + '/' + pagePath + '/'
     }
 
     // Default Website Schema
