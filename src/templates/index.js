@@ -12,7 +12,7 @@ import config from '../utils/siteConfig'
 import colors from '../utils/colors'
 import Cards from '../components/cards'
 import CardOld from '../components/Card'
-import Cardeee from '../components/card2'
+import Offering from '../components/offering'
 import CardHeadline from '../components/card-headline'
 import Missions from '../components/missions'
 import MissionTile from '../components/mission-tile'
@@ -32,6 +32,7 @@ const Flex = styled.div`
 const Index = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
   const clients = data.allContentfulClient.edges
+  const offerings = data.allContentfulOffering.edges
   const missions = data.allContentfulMission.edges
   const featuredPost = posts[0].node
   const { currentPage } = pageContext
@@ -85,62 +86,20 @@ const Index = ({ data, pageContext }) => {
         </Flex>
       </Container>
       <Container>
-        <Cards>
-          <Cardeee>
-            <CardHeadline>Modern web tech without the headache</CardHeadline>
-            <p>Enjoy the power of the latest web technologies –{` `}</p>
-          </Cardeee>
-          <Cardeee>
-            <CardHeadline>Bring your own data</CardHeadline>
-            <p>
-              Gatsby’s rich data plugin ecosystem lets you build sites with the
-              data you want — from one or many sources: Pull data from headless
-              CMSs, SaaS services, APIs, databases, your file system & more
-              directly into your pages using
-              {` `}.
-            </p>
-          </Cardeee>
-          <Cardeee>
-            <CardHeadline>Scale to the entire internet</CardHeadline>
-            <p>
-              Gatsby.js is Internet Scale. Forget complicated deploys with
-              databases and servers and their expensive, time-consuming setup
-              costs, maintenance, and scaling fears. Gatsby.js builds your site
-              as “static” files which can be deployed easily on dozens of
-              services.
-            </p>
-          </Cardeee>
-          <Cardeee>
-            <CardHeadline>Future-proof your website</CardHeadline>
-            <p>
-              Do not build a website with last decade’s tech. The future of the
-              web is mobile, JavaScript and APIs—the {` `}
-              <a href="https://jamstack.org/">JAMstack</a>. Every website is a
-              web app and every web app is a website. Gatsby.js is the universal
-              JavaScript framework you’ve been waiting for.
-            </p>
-          </Cardeee>
-          <Cardeee>
-            <CardHeadline>Future-proof your website</CardHeadline>
-            <p>
-              Do not build a website with last decade’s tech. The future of the
-              web is mobile, JavaScript and APIs—the {` `}
-              <a href="https://jamstack.org/">JAMstack</a>. Every website is a
-              web app and every web app is a website. Gatsby.js is the universal
-              JavaScript framework you’ve been waiting for.
-            </p>
-          </Cardeee>
-          <Cardeee>
-            <CardHeadline>Future-proof your website</CardHeadline>
-            <p>
-              Do not build a website with last decade’s tech. The future of the
-              web is mobile, JavaScript and APIs—the {` `}
-              <a href="https://jamstack.org/">JAMstack</a>. Every website is a
-              web app and every web app is a website. Gatsby.js is the universal
-              JavaScript framework you’ve been waiting for.
-            </p>
-          </Cardeee>
-        </Cards>
+        <h1 className="shrink">Our Offerings</h1>
+        <div className="text">
+          &nbsp;
+        </div>
+          {offerings.map(({ node }) => {
+            return (
+              <Offering key={node.id}>
+                <CardHeadline>
+                  {node.name}
+                </CardHeadline>
+                <div className="text">{node.description.description}</div>
+              </Offering>
+            )
+          })}
       </Container>
       <Container>
         <Missions>
@@ -195,6 +154,16 @@ export const query = graphql`
                 ...GatsbyContentfulFixed_withWebp_noBase64
               }
             }
+          }
+        }
+      }
+    }
+    allContentfulOffering(sort: { fields: [displayPosition], order: ASC }) {
+      edges {
+        node {
+          name
+          description {
+            description
           }
         }
       }
