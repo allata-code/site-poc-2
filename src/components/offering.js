@@ -3,35 +3,98 @@ import styled from 'styled-components'
 import presets, { colors } from '../utils/presets'
 import { rhythm } from '../utils/typography'
 import { vP, vPHd, vPVHd } from './gutters'
+import { scale } from '../utils/typography'
 
 const OfferingContainer = styled.div`
   box-sizing: border-box;
+  min-height: 280px;
+  flex-flow: column;
   display: flex;
-  transform: translateZ(0);
-  margin-bottom: 24px;
+  width: 100%;
+  align-items: flex-start;
+
+  ${presets.Mobile} {
+    width: 100%;
+  }
+  ${presets.Tablet} {
+    width: 50%;
+    padding-right: 40px;
+  }
+  ${presets.Desktop} {
+    width: 25%;
+    padding-right: 40px;
+  }
+  ${presets.VHd} {
+    width: 50%;
+    padding-right: 40px;
+  }
+  ${presets.VVHd} {
+    font-size: ${scale(8 / 10).fontSize};
+  }
+`
+
+const OfferingIcon = styled.img`
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+`
+
+const Headline = styled.h2`
+  line-height: 1.2;
+  font-weight: 700;
+  color: ${props => props.theme.colors.base};
+  margin-top: 0;
+  ...scale(2 / 5);
 
   ${presets.Tablet} {
-    flex: 0 0 auto;
-    max-width: 100%;
-    box-shadow: 0 1px 0 0 ${colors.ui.light};
+    font-size: ${scale(2 / 10).fontSize};
   }
-
-  ${presets.Hd} {
-    flex: 0 0 auto;
-    max-width: 100%;
+  ${presets.Desktop} {
+    font-size: ${scale(3 / 10).fontSize};
+  }
+  ${presets.VHd} {
+    font-size: ${scale(5 / 10).fontSize};
+  }
+  ${presets.VVHd} {
+    font-size: ${scale(7 / 10).fontSize};
   }
 `
+const IconContainer = styled.div`
+  align-items: center;
+  width: 100%;
+  text-align: center;
+`
 
-const Inner = styled.div`
+const TextContainer = styled.div`
   padding-bottom: 0;
   transform: translateZ(0);
-
+  display: flex;
+  flex-direction: column;
+  flex: 2;
 `
 
-const Offering = ({ children }) => {
+const LearnMore = styled.button`
+  margin-top: 16px;
+  border: 1px grey solid;
+  font-size: 0.8em;
+  padding: 8px;
+`
+
+const Offering = ({ offering, children, ...props }) => {
   return (
     <OfferingContainer>
-      <Inner>{children}</Inner>
+      <IconContainer>
+        <OfferingIcon src={offering.icon.file.url} />
+      </IconContainer>
+      <TextContainer>
+        <Headline>{offering.name}</Headline>
+        <div className="text">
+          {offering.description.description.substring(0, 240)}
+          ...
+        </div>
+      </TextContainer>
+      <LearnMore>LEARN MORE</LearnMore>
     </OfferingContainer>
   )
 }

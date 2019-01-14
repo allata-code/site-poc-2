@@ -59,11 +59,6 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" activeStyle={activeLinkStyle}>
-              Home
-            </Link>
-          </li>
-          <li>
             <Link to="/offerings/" activeStyle={activeLinkStyle}>
               Offerings
             </Link>
@@ -76,11 +71,6 @@ const Menu = () => {
           <li>
             <Link to="/insights/" activeStyle={activeLinkStyle}>
               Insights
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Contact
             </Link>
           </li>
         </ul>

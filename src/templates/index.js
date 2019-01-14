@@ -19,13 +19,22 @@ import MissionTile from '../components/mission-tile'
 import MissionFlex from '../components/mission-flex'
 import styled from 'styled-components'
 
-const Flex = styled.div`
+const ClientFlex = styled.div`
   display: flex;
   max-width: 1150px;
   margin-top: 100px;
   margin-right: auto;
   margin-left: auto;
   justify-content: space-around;
+  flex-wrap: wrap;
+`
+
+const OfferingFlex = styled.div`
+  display: flex;
+  max-width: 1150px;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: space-between;
   flex-wrap: wrap;
 `
 
@@ -79,27 +88,20 @@ const Index = ({ data, pageContext }) => {
         <div className="text">
           Allata has been honored to partner up with these clients.
         </div>
-        <Flex>
+        <ClientFlex>
           {clients.map(({ node }) => {
             return <Client key={node.id} client={node} />
           })}
-        </Flex>
+        </ClientFlex>
       </Container>
       <Container>
-        <h1 className="shrink">Our Offerings</h1>
-        <div className="text">
-          &nbsp;
-        </div>
+        <h1 className="shrink">Offerings</h1>
+        <div className="text">&nbsp;</div>
+        <OfferingFlex>
           {offerings.map(({ node }) => {
-            return (
-              <Offering key={node.id}>
-                <CardHeadline>
-                  {node.name}
-                </CardHeadline>
-                <div className="text">{node.description.description}</div>
-              </Offering>
-            )
+            return <Offering key={node.id} offering={node} />
           })}
+        </OfferingFlex>
       </Container>
       <Container>
         <Missions>
@@ -164,6 +166,15 @@ export const query = graphql`
           name
           description {
             description
+          }
+          icon {
+            title
+            fixed(width: 200) {
+              ...GatsbyContentfulFixed_withWebp_noBase64
+            }
+            file {
+              url
+            }
           }
         }
       }
