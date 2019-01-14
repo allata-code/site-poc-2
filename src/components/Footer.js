@@ -21,7 +21,8 @@ const FooterHeader = styled.h1`
 const Address = styled.address`
   margin-bottom: 24px;
   margin-right: 24px;
-  font-size: 0.9em;
+  font-size: 14px;
+  line-height: 1.5em;
 `
 
 const AddressList = styled.div`
@@ -66,12 +67,14 @@ const CauseBlock = styled.div`
 `
 
 const Cause = styled.p`
-  font-size: 0.9em;
+  font-size: 14px;
+  line-height: 1.5em;
 `
 
 const AddressBlock = styled.div`
   width: 100%;
   margin-bottom: 16px;
+  line-height: 1.5em;
 
   ${presets.Mobile} {
     width: 100%;
@@ -120,11 +123,11 @@ const Footer = () => (
         <Cause>
           Just as strongly as we care about our clients, we feel that it's
           important to give back to the community. Each year, we donate 1% of
-          our net income to a different charitable cause or non-profit that we're
-          passionate about.
+          our net income to a different charitable cause or non-profit that
+          we're passionate about.
         </Cause>
       </CauseBlock>
-      <CopyrightBlock>© 2018 Allata, LLC. All rights reserved.</CopyrightBlock>
+      <CopyrightBlock>© 2019 Allata, LLC. All rights reserved.</CopyrightBlock>
     </List>
   </Wrapper>
 )

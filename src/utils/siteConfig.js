@@ -17,5 +17,5 @@ module.exports = {
   siteLogo: '/logos/allata_share_logo.png', // Logo used for SEO, RSS, and App manifest
   backgroundColor: '#e9e9e9', // Used for Offline Manifest
   themeColor: '#121212', // Used for Offline Manifest
-  copyright: 'Copyright © 2018 Allata', // Copyright string for the RSS feed
+  copyright: 'Copyright © 2019 Allata', // Copyright string for the RSS feed
 }

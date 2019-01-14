@@ -58,14 +58,14 @@ module.exports = {
   author: 'Allata',
   authorUrl: 'https://allata.com',
   userTwitter: '@twitter',
-  shortTitle: 'GCN App',
+  shortTitle: 'Allata',
   shareImage: '/logos/share.jpg',
   shareImageWidth: 900,
   shareImageHeight: 600,
   siteLogo: '/logos/logo-512.png',
   backgroundColor: '#e9e9e9',
   themeColor: '#121212',
-  copyright: 'Copyright © 2018 Allata',
+  copyright: 'Copyright © 2019 Allata',
 }
 ```
 

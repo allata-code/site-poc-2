@@ -17,6 +17,17 @@ import CardHeadline from '../components/card-headline'
 import Missions from '../components/missions'
 import MissionTile from '../components/mission-tile'
 import MissionFlex from '../components/mission-flex'
+import styled from 'styled-components'
+
+const Flex = styled.div`
+  display: flex;
+  max-width: 1150px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`
 
 const Index = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
@@ -65,14 +76,13 @@ const Index = ({ data, pageContext }) => {
       <Container>
         <h1 className="shrink">Our Clients</h1>
         <div className="text">
-          Just a few of the amazing companies that trust Allata with their
-          important work.
+          Allata has been honored to partner up with these clients.
         </div>
-        <CardList>
+        <Flex>
           {clients.map(({ node }) => {
             return <Client key={node.id} client={node} />
           })}
-        </CardList>
+        </Flex>
       </Container>
       <Container>
         <Cards>
@@ -198,8 +208,11 @@ export const query = graphql`
           website
           logo {
             title
-            fixed(width: 200) {
-              ...GatsbyContentfulFixed_withWebp_noBase64
+            fluid(maxHeight: 35, maxWidth: 200) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+            file {
+              url
             }
           }
         }
