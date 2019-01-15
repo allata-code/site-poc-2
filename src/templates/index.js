@@ -110,7 +110,7 @@ const Index = ({ data, pageContext }) => {
         <div className="text">&nbsp;</div>
         <OfferingFlex>
           {offerings.map(({ node }) => {
-            return <Offering key={node.id} offering={node} />
+            return <Offering offering={node} />
           })}
         </OfferingFlex>
       </Container>
@@ -174,6 +174,7 @@ export const query = graphql`
     allContentfulOffering(sort: { fields: [displayPosition], order: ASC }) {
       edges {
         node {
+          id
           name
           description {
             description

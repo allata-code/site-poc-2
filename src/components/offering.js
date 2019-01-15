@@ -4,6 +4,7 @@ import presets, { colors } from '../utils/presets'
 import { rhythm } from '../utils/typography'
 import { vP, vPHd, vPVHd } from './gutters'
 import { scale } from '../utils/typography'
+import { node } from 'prop-types';
 
 const OfferingContainer = styled.div`
   box-sizing: border-box;
@@ -12,6 +13,7 @@ const OfferingContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: flex-start;
+  margin-bottom: 20px;
 
   ${presets.Mobile} {
     width: 100%;
@@ -83,7 +85,7 @@ const LearnMore = styled.button`
 
 const Offering = ({ offering, children, ...props }) => {
   return (
-    <OfferingContainer>
+    <OfferingContainer key={node.id}>
       <IconContainer>
         <OfferingIcon src={offering.icon.file.url} />
       </IconContainer>
