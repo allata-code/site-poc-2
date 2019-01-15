@@ -8,6 +8,7 @@ import CardList from '../components/CardList'
 import PageTitle from '../components/PageTitle'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
+import CaseStudyCard from '../components/case-study-card';
 
 const TagTemplate = ({ data, pageContext }) => {
   const posts = sortBy(data.contentfulTag.post, 'publishDate').reverse()
@@ -52,11 +53,11 @@ const TagTemplate = ({ data, pageContext }) => {
           &rdquo;
         </PageTitle>
 
-        <CardList>
+        {/* <CardList>
           {posts.slice(skip, limit * currentPage).map(post => (
-            <CardOld {...post} key={post.id} />
+            <CaseStudyCard caseStudy={caseStudy} key={caseStudy.id} />
           ))}
-        </CardList>
+        </CardList> */}
       </Container>
       <Pagination context={pageContext} />
     </Layout>
