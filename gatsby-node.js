@@ -227,15 +227,15 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `).then(result => {
       const pages = result.data.allContentfulPage.edges
-      pages.map(({ node }) => {
-        createPage({
-          path: `${node.slug}/`,
-          component: path.resolve(`./src/templates/page.js`),
-          context: {
-            slug: node.slug,
-          },
-        })
-      })
+      // pages.map(({ node }) => {
+      //   createPage({
+      //     path: `${node.slug}/`,
+      //     component: path.resolve(`./src/templates/page.js`),
+      //     context: {
+      //       slug: node.slug,
+      //     },
+      //   })
+      // })
       resolve()
     })
   })

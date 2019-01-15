@@ -51,8 +51,9 @@ const Index = ({ data, pageContext }) => {
   const posts = data.allContentfulPost.edges
   const clients = data.allContentfulClient.edges
   const offerings = data.allContentfulOffering.edges
+  const caseStudies = data.allContentfulCaseStudy.edges
   const missions = data.allContentfulMission.edges
-  const featuredPost = posts[0].node
+  const featuredCaseStudy = caseStudies[0].node
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
 
@@ -67,7 +68,8 @@ const Index = ({ data, pageContext }) => {
       <GradientContainer>
         <Container>
           <h1 className="shrink">
-            Champions for transforming <br></br>digital enterprise
+            Champions for transforming <br />
+            digital enterprise
           </h1>
           <div className="text">
             Allata exists to produce industry-defining, high-impact work. We're
@@ -80,9 +82,9 @@ const Index = ({ data, pageContext }) => {
       <Container>
         {isFirstPage ? (
           <CardList>
-            <CardOld {...featuredPost} featured />
-            {posts.slice(1).map(({ node: post }) => (
-              <CardOld key={post.id} {...post} />
+            <CardOld {...featuredCaseStudy} featured />
+            {caseStudies.slice(1).map(({ node: caseStudy }) => (
+              <CardOld key={caseStudy.id} {...caseStudy} />
             ))}
           </CardList>
         ) : (
@@ -205,6 +207,35 @@ export const query = graphql`
             }
             file {
               url
+            }
+          }
+        }
+      }
+    }
+    allContentfulCaseStudy(
+      sort: { fields: [title], order: ASC }
+      limit: 10000
+    ) {
+      edges {
+        node {
+          id
+          slug
+          title
+          backgroundImage {
+            title
+            file {
+              url
+            }
+            fluid(maxWidth: 1200) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+          introduction {
+            internal {
+              content
+            }
+            childMarkdownRemark {
+              html
             }
           }
         }

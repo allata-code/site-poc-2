@@ -54,16 +54,16 @@ const Excerpt = styled.p`
   line-height: 1.6;
 `
 
-const CardOld = ({ slug, heroImage, title, publishDate, body, client, ...props }) => {
+const CaseStudyCard = ({ slug, backgroundImage, title, introduction, client, ...props }) => {
   return (
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
-        <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
-        <Title>{client.name}</Title>
-        <Date>{publishDate}</Date>
+        <Img fluid={backgroundImage.fluid} backgroundColor={'#eeeeee'} />
+        <Title>{title}</Title>
+        {/* <Date>{publishDate}</Date> */}
         <Excerpt
           dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.excerpt,
+            __html: introduction.childMarkdownRemark.html,
           }}
         />
       </Link>
@@ -71,4 +71,4 @@ const CardOld = ({ slug, heroImage, title, publishDate, body, client, ...props }
   )
 }
 
-export default CardOld
+export default CaseStudyCard
