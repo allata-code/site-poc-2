@@ -61,11 +61,7 @@ const CaseStudyCard = ({ slug, backgroundImage, title, introduction, client, ...
         <Img fluid={backgroundImage.fluid} backgroundColor={'#eeeeee'} />
         <Title>{title}</Title>
         {/* <Date>{publishDate}</Date> */}
-        <Excerpt
-          dangerouslySetInnerHTML={{
-            __html: introduction.childMarkdownRemark.html,
-          }}
-        />
+        <Excerpt>{introduction.internal.content}</Excerpt>
       </Link>
     </Post>
   )
