@@ -10,7 +10,7 @@ import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 import colors from '../utils/colors'
 import Cards from '../components/cards'
-import CardOld from '../components/case-study-card'
+import CaseStudyCard from '../components/case-study-card'
 import Offering from '../components/offering'
 import CardHeadline from '../components/card-headline'
 import Missions from '../components/missions'
@@ -81,15 +81,15 @@ const Index = ({ data, pageContext }) => {
       <Container>
         {isFirstPage ? (
           <CardList>
-            <CardOld {...featuredCaseStudy} featured />
+            <CaseStudyCard caseStudy={featuredCaseStudy} featured />
             {caseStudies.slice(1).map(({ node: caseStudy }) => (
-              <CardOld key={caseStudy.id} {...caseStudy} />
+              <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
             ))}
           </CardList>
         ) : (
           <CardList>
-            {posts.map(({ node: post }) => (
-              <CardOld key={post.id} {...post} />
+            {caseStudies.map(({ node: caseStudy }) => (
+              <CaseStudyCard key={post.id} caseStudy={caseStudy} />
             ))}
           </CardList>
         )}

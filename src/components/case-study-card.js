@@ -54,14 +54,14 @@ const Excerpt = styled.p`
   line-height: 1.6;
 `
 
-const CaseStudyCard = ({ slug, backgroundImage, title, introduction, client, ...props }) => {
+const CaseStudyCard = ({ caseStudy, ...props }) => {
   return (
     <Post featured={props.featured}>
-      <Link to={`/${slug}/`}>
-        <Img fluid={backgroundImage.fluid} backgroundColor={'#eeeeee'} />
-        <Title>{title}</Title>
+      <Link to={`/${caseStudy.slug}/`}>
+        <Img fluid={caseStudy.backgroundImage.fluid} backgroundColor={'#eeeeee'} />
+        <Title>{caseStudy.title}</Title>
         {/* <Date>{publishDate}</Date> */}
-        <Excerpt>{introduction.internal.content}</Excerpt>
+        <Excerpt>{caseStudy.introduction.internal.content}</Excerpt>
       </Link>
     </Post>
   )
