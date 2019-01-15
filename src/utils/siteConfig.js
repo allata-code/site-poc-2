@@ -1,5 +1,5 @@
 module.exports = {
-  siteTitle: 'Allata',
+  siteTitle: 'Allata - Digital Consulting Services - Strategy, Design, Development and Support',
   siteTitleAlt: 'Allata Technology Consulting', // This allows an alternative site title for SEO schema.
   publisher: 'Allata, LLC', // Organization name used for SEO schema
   siteDescription:

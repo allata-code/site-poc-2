@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-import favicon from '../images/favicon.ico'
+import favicon from '../images/apple-icon-120x120.png'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 import config from '../utils/siteConfig'

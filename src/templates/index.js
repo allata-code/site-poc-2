@@ -19,6 +19,15 @@ import MissionTile from '../components/mission-tile'
 import MissionFlex from '../components/mission-flex'
 import styled from 'styled-components'
 
+const GradientContainer = styled.section`
+  background-color: #4f5390;
+  background-image: linear-gradient(147deg, #4f5390 0%, #c65087 74%);
+  padding-top: 200px;
+  * {
+    color: #f4f4f4;
+  }
+`
+
 const ClientFlex = styled.div`
   display: flex;
   max-width: 1150px;
@@ -55,17 +64,19 @@ const Index = ({ data, pageContext }) => {
           <title>{`${config.siteTitle} - Page ${currentPage}`}</title>
         </Helmet>
       )}
-      <Container>
-        <h1 className="shrink">
-          Champions for transforming digital enterprise
-        </h1>
-        <div className="text">
-          Allata exists to produce industry-defining, high-impact work. We're a
-          constantly evolving, relationship-first company aggressively committed
-          to client and employee experience. The agency model is dead. Meet
-          Allata.
-        </div>
-      </Container>
+      <GradientContainer>
+        <Container>
+          <h1 className="shrink">
+            Champions for transforming <br></br>digital enterprise
+          </h1>
+          <div className="text">
+            Allata exists to produce industry-defining, high-impact work. We're
+            a constantly evolving, relationship-first company aggressively
+            committed to client and employee experience. The agency model is
+            dead. Meet Allata.
+          </div>
+        </Container>
+      </GradientContainer>
       <Container>
         {isFirstPage ? (
           <CardList>
