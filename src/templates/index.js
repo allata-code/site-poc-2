@@ -89,7 +89,7 @@ const Index = ({ data, pageContext }) => {
         ) : (
           <CardList>
             {caseStudies.map(({ node: caseStudy }) => (
-              <CaseStudyCard key={post.id} caseStudy={caseStudy} />
+              <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
             ))}
           </CardList>
         )}
