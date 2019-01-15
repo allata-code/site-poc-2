@@ -165,6 +165,55 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
+   const loadCaseStudies = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allContentfulCaseStudy(
+          sort: { fields: [title], order: ASC }
+          limit: 10000
+        ) {
+          edges {
+            node {
+              slug
+              title
+              backgroundImage {
+                title
+                file {
+                  url
+                }
+              }
+              introduction{
+                internal{
+                  content
+                }
+                childMarkdownRemark{
+                  html
+                }
+              }
+            }
+          }
+        }
+      }
+    `).then(result => {
+      const caseStudies = result.data.allContentfulCaseStudy.edges
+
+      // Create each individual post
+      caseStudies.forEach((edge, i) => {
+        const caseStudy = caseStudies[i].node
+
+        createPage({
+          path: `${edge.node.slug}/`,
+          component: path.resolve(`./src/templates/case-study.js`),
+          context: {
+            slug: edge.node.slug,
+            caseStudy
+          },
+        })
+      })
+      resolve()
+    })
+  })
+
   const loadPages = new Promise((resolve, reject) => {
     graphql(`
       {
@@ -191,5 +240,5 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  return Promise.all([loadPosts, loadGhostPosts, loadTags, loadPages])
+  return Promise.all([loadPosts, loadGhostPosts, loadCaseStudies, loadTags, loadPages])
 }
