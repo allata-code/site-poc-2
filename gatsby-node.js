@@ -240,5 +240,41 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  return Promise.all([loadPosts, loadGhostPosts, loadCaseStudies, loadTags, loadPages])
+  const loadJobPostings = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allContentfulJobPosting(
+          sort: { fields: [jobTitle], order: ASC }
+          limit: 10000
+        ) {
+          edges {
+            node {
+              slug
+              jobTitle 
+            }
+          }
+        }
+      }
+    `).then(result => {
+      const jobPostings = result.data.allContentfulJobPosting.edges
+
+      // Create each individual post
+      jobPostings.forEach((edge, i) => {
+        const jobPosting = jobPostings[i].node
+
+        createPage({
+          path: `${edge.node.slug}/`,
+          component: path.resolve(`./src/templates/job-posting.js`),
+          context: {
+            slug: edge.node.slug,
+            jobPosting 
+          },
+        })
+      })
+      resolve()
+    })
+  })
+
+
+  return Promise.all([loadPosts, loadGhostPosts, loadCaseStudies, loadTags, loadPages, loadJobPostings])
 }

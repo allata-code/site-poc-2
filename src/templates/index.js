@@ -240,6 +240,17 @@ export const query = graphql`
         }
       }
     }
+    allContentfulJobPosting(
+      sort: { fields: [jobTitle], order: ASC }
+      limit: 10000
+    ) {
+      edges {
+        node {
+          slug
+          jobTitle 
+        }
+      }
+    }
     allContentfulPost(
       sort: { fields: [publishDate], order: DESC }
       limit: $limit
