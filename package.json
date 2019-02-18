@@ -6,6 +6,7 @@
   "author": "John Salvie <john@allata.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
+    "bloomer": "^0.6.5",
     "chalk": "^2.4.1",
     "contentful-import": "^7.4.1",
     "gatsby": "^2.0.29",
