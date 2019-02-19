@@ -155,7 +155,7 @@ class Menu extends Component {
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link to="/insights/" activeStyle={activeLinkStyle}>
+              <Link to="/careers/" activeStyle={activeLinkStyle}>
                 Careers
               </Link>
             </NavbarItem>
