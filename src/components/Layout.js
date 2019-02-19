@@ -8,6 +8,10 @@ import config from '../utils/siteConfig'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
 
+
+import '../styles/all.sass'
+import 'font-awesome/css/font-awesome.min.css';
+
 const Template = ({ children }) => {
   return (
     <div className="siteRoot">

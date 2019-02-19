@@ -1,5 +1,32 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React, { Component } from 'react'
+import Link from 'gatsby-link'
+
+import {
+  Container,
+  Field,
+  Control,
+  Button,
+  Hero,
+  HeroHeader,
+  HeroBody,
+  Navbar,
+  NavbarBrand,
+  NavbarBurger,
+  NavbarDivider,
+  NavbarDropdown,
+  NavbarEnd,
+  NavbarItem,
+  NavbarLink,
+  NavbarMenu,
+  NavbarStart,
+  Icon,
+  HeroFooter,
+  Tabs,
+  TabList,
+  Tab,
+  TabLink,
+} from 'bloomer'
+
 import styled from 'styled-components'
 
 const Header = styled.header`
@@ -46,37 +73,97 @@ const Nav = styled.nav`
 
 const activeLinkStyle = {
   color: 'black',
+  fontWeight: 700,
 }
 
-const Menu = () => {
-  return (
-    <Header>
-      <Nav>
-        <ul>
-          <li>
+// const Menu = () => {
+//   return (
+//     <Header>
+//       <Nav>
+//         <ul>
+//           <li>
+//             <Link to="/" activeStyle={activeLinkStyle}>
+//               <img src="/logos/allata_black.png"></img>
+//             </Link>
+//           </li>
+//           <li>
+//             <Link to="/offerings/" activeStyle={activeLinkStyle}>
+//               Offerings
+//             </Link>
+//           </li>
+//           <li>
+//             <Link to="/about/" activeStyle={activeLinkStyle}>
+//               About
+//             </Link>
+//           </li>
+//           <li>
+//             <Link to="/insights/" activeStyle={activeLinkStyle}>
+//               Insights
+//             </Link>
+//           </li>
+//         </ul>
+//       </Nav>
+//     </Header>
+//   )
+// }
+
+// export default Menu
+
+class Menu extends Component {
+  state = {
+    //This sets the state of Bulma elements
+    isActive: false,
+  }
+
+  //This toggles the navbar dropdown
+  onClickNav = () => {
+    this.setState({
+      isActive: !this.state.isActive,
+    })
+  }
+
+  render() {
+    return (
+      <Navbar style={{ margin: '0' }}>
+        <NavbarBrand>
+          <NavbarItem>
             <Link to="/" activeStyle={activeLinkStyle}>
-              <img src="/logos/allata_black.png"></img>
+              <img src="/logos/allata_black.png" style={{ width: 80 }} />{' '}
             </Link>
-          </li>
-          <li>
-            <Link to="/offerings/" activeStyle={activeLinkStyle}>
-              Offerings
-            </Link>
-          </li>
-          <li>
-            <Link to="/about/" activeStyle={activeLinkStyle}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/insights/" activeStyle={activeLinkStyle}>
-              Insights
-            </Link>
-          </li>
-        </ul>
-      </Nav>
-    </Header>
-  )
+          </NavbarItem>
+          <NavbarBurger
+            isActive={this.state.isActive}
+            onClick={this.onClickNav}
+          />
+        </NavbarBrand>
+
+        <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
+          <NavbarEnd>
+            <NavbarItem>
+              <Link to="/offerings/" activeStyle={activeLinkStyle}>
+                Offerings
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/about/" activeStyle={activeLinkStyle}>
+                About
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/insights/" activeStyle={activeLinkStyle}>
+                Insights
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/insights/" activeStyle={activeLinkStyle}>
+                Careers
+              </Link>
+            </NavbarItem>
+          </NavbarEnd>
+        </NavbarMenu>
+      </Navbar>
+    )
+  }
 }
 
 export default Menu
