@@ -125,7 +125,7 @@ class Menu extends Component {
   render() {
     return (
       <Navbar style={{ margin: '0' }}>
-        <NavbarBrand>
+        <NavbarBrand style={{ margin: '0 1em 0' }}>
           <NavbarItem>
             <Link to="/" activeStyle={activeLinkStyle}>
               <img src="/logos/allata_black.png" style={{ width: 80 }} />{' '}
@@ -138,7 +138,7 @@ class Menu extends Component {
         </NavbarBrand>
 
         <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
-          <NavbarEnd>
+          <NavbarEnd style={{ marginRight: '1em' }}>
             <NavbarItem>
               <Link to="/offerings/" activeStyle={activeLinkStyle}>
                 Offerings
