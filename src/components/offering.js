@@ -5,6 +5,8 @@ import { rhythm } from '../utils/typography'
 import { vP, vPHd, vPVHd } from './gutters'
 import { scale } from '../utils/typography'
 import { node } from 'prop-types';
+import { Button } from 'bloomer'
+
 
 const OfferingContainer = styled.div`
   box-sizing: border-box;
@@ -96,7 +98,8 @@ const Offering = ({ offering, children, ...props }) => {
           ...
         </div>
       </TextContainer>
-      <LearnMore>LEARN MORE</LearnMore>
+      <Button isColor='primary'>learn more</Button>
+
     </OfferingContainer>
   )
 }
