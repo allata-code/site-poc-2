@@ -99,7 +99,6 @@ const Offering = ({ offering, children, ...props }) => {
         </div>
       </TextContainer>
       <Button isColor='primary'>learn more</Button>
-
     </OfferingContainer>
   )
 }

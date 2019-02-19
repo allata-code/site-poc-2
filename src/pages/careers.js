@@ -37,7 +37,7 @@ const Careers = ({ data }) => {
         <HeroBody>
           <Container>
             <h1 className="shrink align-right">
-              Come help us make collaboration even better.
+              Come help us do great things.
             </h1>
             <div className="text">
               At Allata we build technology that makes work smoother for our
