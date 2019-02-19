@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { Tag } from 'bloomer'
+import { Box, Tag } from 'bloomer'
 
 const Container = styled.div`
   position: relative;
@@ -54,7 +54,7 @@ const Bio = styled.p`
 
 const JobPosting = ({ jobPosting, ...props }) => {
   return (
-    <Container>
+    <Box>
       <Link to={`/${jobPosting.slug}/`}>
         <Name>{jobPosting.jobTitle}</Name>
         <List>
@@ -63,7 +63,7 @@ const JobPosting = ({ jobPosting, ...props }) => {
           })}
         </List>
       </Link>
-    </Container>
+    </Box>
   )
 }
 

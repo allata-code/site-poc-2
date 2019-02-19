@@ -111,7 +111,7 @@ const Index = ({ data, pageContext }) => {
         <div className="text">&nbsp;</div>
         <OfferingFlex>
           {offerings.map(({ node }) => {
-            return <Offering offering={node} />
+            return <Offering key={node.id} offering={node} />
           })}
         </OfferingFlex>
       </Container>

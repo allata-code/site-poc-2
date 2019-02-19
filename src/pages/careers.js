@@ -11,6 +11,7 @@ import JobPosting from '../components/job-posting'
 import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
+import { Hero, HeroBody } from 'bloomer'
 
 const ValueList = styled.ul`
   display: flex;
@@ -32,23 +33,26 @@ const Careers = ({ data }) => {
         <title>{`Careers - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO postNode={postNode} pagePath="careers" customTitle />
+      <Hero isColor="primary" isSize="medium">
+        <HeroBody>
+          <Container>
+            <h1 className="shrink align-right">
+              Come help us make collaboration even better.
+            </h1>
+            <div className="text">
+              At Allata we build technology that makes work smoother for our
+              clients. We’ve built a company we truly love working for, and we
+              think you will too.
+            </div>
+          </Container>
+        </HeroBody>
+      </Hero>
 
       <Container>
-        <h1 className="shrink align-right">
-          Come help us make collaboration even better.
-        </h1>
-        <div className="text">
-        At Allata we build technology that makes work smoother for our clients.
-        We’ve built a company we truly love working for, and we think you will too.
-        </div>
-      </Container>
-      <Container>
         <PageTitle>Opportunities</PageTitle>
-        <PersonList>
-          {jobPostings.map(({ node }) => {
-            return <JobPosting key={node.id} jobPosting={node} />
-          })}
-        </PersonList>
+        {jobPostings.map(({ node }) => {
+          return <JobPosting key={node.id} jobPosting={node} />
+        })}
       </Container>
     </Layout>
   )

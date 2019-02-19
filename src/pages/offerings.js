@@ -3,13 +3,14 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Helmet from 'react-helmet'
 import Container from '../components/Container'
-import Person from '../components/person'
+import Offering from '../components/offering'
 import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
+import { Hero, HeroBody } from 'bloomer'
 
-const About = ({ data }) => {
-  const persons = data.allContentfulPerson.edges
+const Offerings = ({ data }) => {
+  const offerings = data.allContentfulOffering.edges
   const postNode = {
     title: `Offerings - ${config.siteTitle}`,
   }
@@ -21,8 +22,22 @@ const About = ({ data }) => {
       </Helmet>
       <SEO postNode={postNode} pagePath="offerings" customTitle />
 
+      <Hero isColor="info" isSize="small">
+        <HeroBody>
+          <Container>
+            <h1 className="shrink align-right">Offerings</h1>
+            <div className="text">
+              At Allata we build technology that makes work smoother for our
+              clients. We’ve built a company we truly love working for, and we
+              think you will too.
+            </div>
+          </Container>
+        </HeroBody>
+      </Hero>
       <Container>
-        <PageTitle>Offerings</PageTitle>
+        {offerings.map(({ node }) => {
+          return <Offering key={node.id} offering={node} />
+        })}
       </Container>
     </Layout>
   )
@@ -30,21 +45,21 @@ const About = ({ data }) => {
 
 export const query = graphql`
   query {
-    allContentfulPerson(sort: { fields: [name], order: ASC }) {
+    allContentfulOffering(sort: { fields: [displayPosition], order: ASC }) {
       edges {
         node {
           id
           name
-          title
-          linkedIn
-          shortBio {
-            shortBio
-            id
+          description {
+            description
           }
-          headshot {
+          icon {
             title
-            fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+            fixed(width: 200) {
+              ...GatsbyContentfulFixed_withWebp_noBase64
+            }
+            file {
+              url
             }
           }
         }
@@ -53,4 +68,4 @@ export const query = graphql`
   }
 `
 
-export default About
+export default Offerings

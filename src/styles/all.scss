@@ -4,8 +4,8 @@
 // @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
 // Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
+$purple: #42467b;
+$pink: #c65088;
 $grey-dark: #525254;
 $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
@@ -16,7 +16,8 @@ $grey-lighter: rgb(240, 240, 240);
 // $family-sans-serif: "Nunito", sans-serif;
 // $grey-dark: $brown;
 // $grey-light: $beige-light;
-// $primary: $purple;
+$primary: $purple;
+$info: $pink;
 $link: $grey-dark;
 // $widescreen-enabled: false;
 // $fullhd-enabled: false;
@@ -30,6 +31,7 @@ $input-shadow: none;
 // Import only what you need from Bulma
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
 @import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/box.sass";
 @import "../../node_modules/bulma/sass/elements/button.sass";
 @import "../../node_modules/bulma/sass/elements/tag.sass";
 @import "../../node_modules/bulma/sass/elements/container.sass";
