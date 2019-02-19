@@ -62,6 +62,10 @@ export const query = graphql`
           id
           jobTitle
           slug
+          locations {
+            id
+            name
+          }
         }
       }
     }

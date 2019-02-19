@@ -116,7 +116,6 @@ exports.createPages = ({ graphql, actions }) => {
             post,
             prev,
             next,
-
           },
         })
       })
@@ -165,7 +164,7 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-   const loadCaseStudies = new Promise((resolve, reject) => {
+  const loadCaseStudies = new Promise((resolve, reject) => {
     graphql(`
       {
         allContentfulCaseStudy(
@@ -182,11 +181,11 @@ exports.createPages = ({ graphql, actions }) => {
                   url
                 }
               }
-              introduction{
-                internal{
+              introduction {
+                internal {
                   content
                 }
-                childMarkdownRemark{
+                childMarkdownRemark {
                   html
                 }
               }
@@ -206,7 +205,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve(`./src/templates/case-study.js`),
           context: {
             slug: edge.node.slug,
-            caseStudy
+            caseStudy,
           },
         })
       })
@@ -250,7 +249,11 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               slug
-              jobTitle 
+              jobTitle
+              locations {
+                id
+                name
+              }
             }
           }
         }
@@ -267,7 +270,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve(`./src/templates/job-posting.js`),
           context: {
             slug: edge.node.slug,
-            jobPosting 
+            jobPosting,
           },
         })
       })
@@ -275,6 +278,12 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-
-  return Promise.all([loadPosts, loadGhostPosts, loadCaseStudies, loadTags, loadPages, loadJobPostings])
+  return Promise.all([
+    loadPosts,
+    loadGhostPosts,
+    loadCaseStudies,
+    loadTags,
+    loadPages,
+    loadJobPostings,
+  ])
 }

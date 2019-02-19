@@ -247,7 +247,11 @@ export const query = graphql`
       edges {
         node {
           slug
-          jobTitle 
+          jobTitle
+          locations {
+            id
+            name
+          }
         }
       }
     }
